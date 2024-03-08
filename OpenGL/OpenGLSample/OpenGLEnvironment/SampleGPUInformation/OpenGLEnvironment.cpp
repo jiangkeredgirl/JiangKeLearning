@@ -59,17 +59,29 @@ const char* fragmentShaderSource =
 "void main(){\n										"
 "		FragColor = vertexColor;}\n";
 
-int main(int argc, char* argv[]) {
 
+void DisplayGPUInfo()
+{
+	const GLubyte* info = glGetString(GL_VENDOR);
+	printf("Graphics Company:%s\n", info);
 
+	info = glGetString(GL_RENDERER);
+	printf("Graphics card model:%s\n", info);
+
+	info = glGetString(GL_VERSION);
+	printf("GL_VERSION:%s\n", info);
+
+	info = glGetString(GL_SHADING_LANGUAGE_VERSION);
+	printf("GL_SHADING_LANGUAGE_VERSION:%s\n", info);
+
+	//info = glGetString(GL_EXTENSIONS);
+	//printf("GL_EXTENSIONS:%s\n", info);
+}
+
+int main(int argc, char* argv[]) 
+{
 	glfwInit();
-	//设置opengl版本3.3
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);//告诉glfw主要版本3
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);//告诉glfw次要版本3
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);//告诉glfw使用core-profile
-
 	GLFWwindow* window = glfwCreateWindow(800, 600, "Test window", NULL, NULL);
-
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -77,7 +89,13 @@ int main(int argc, char* argv[]) {
 		//return EXIT_FAILURE;
 	}
 	glfwMakeContextCurrent(window);//指定线程
-
+	DisplayGPUInfo();
+	
+	//设置opengl版本3.3
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);//告诉glfw主要版本3
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);//告诉glfw次要版本3
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);//告诉glfw使用core-profile
+	
 	glewExperimental = true;
 
 	if (glewInit() != GLEW_OK)//初始glew工具
