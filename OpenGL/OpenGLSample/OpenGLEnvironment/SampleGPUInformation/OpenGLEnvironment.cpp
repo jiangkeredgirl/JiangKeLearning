@@ -21,11 +21,11 @@
 //   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
 
 //#define USE_GLAD
-#define GLEW_STATIC
 
 #ifdef USE_GLAD
 #include <glad/glad.h>
 #else
+#define GLEW_STATIC
 #include <GL/glew.h>
 #endif
 
@@ -98,12 +98,6 @@ int InitGL(GLFWwindow*& window)
 		//return EXIT_FAILURE;
 	}
 	glfwMakeContextCurrent(window);//指定线程
-	DisplayGPUInfo();
-
-	//设置opengl版本3.3
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);//告诉glfw主要版本3
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);//告诉glfw次要版本3
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);//告诉glfw使用core-profile
 
 #ifdef USE_GLAD
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -120,6 +114,14 @@ int InitGL(GLFWwindow*& window)
 		return EXIT_FAILURE;
 	}
 #endif
+
+	DisplayGPUInfo();
+
+	//设置opengl版本3.3
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);//告诉glfw主要版本3
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);//告诉glfw次要版本3
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);//告诉glfw使用core-profile
+
 	//设置视口视角
 	glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT);
 	return 0;
