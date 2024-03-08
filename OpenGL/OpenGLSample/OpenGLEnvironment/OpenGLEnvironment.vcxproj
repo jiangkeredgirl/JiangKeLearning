@@ -74,13 +74,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>..\..\OpenGLLib\glew\glew-2.2.0-win32\glew-2.2.0\include;..\..\OpenGLLib\glfw\glfw-3.3.8.bin.WIN64\include;..\..\OpenGLLib\glm\glm;..\..\OpenGLLib\soil\soil\include;..\..\OpenGLLib\glut\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\OpenGLLib\glew\glew-2.2.0-win32\glew-2.2.0\include;..\..\OpenGLLib\glad\include;..\..\OpenGLLib\glfw\glfw-3.3.8.bin.WIN64\include;..\..\OpenGLLib\glm\glm;..\..\OpenGLLib\soil\soil\include;..\..\OpenGLLib\glut\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\OpenGLLib\glew\glew-2.2.0-win32\glew-2.2.0\lib\Release\x64;..\..\OpenGLLib\glfw\glfw-3.3.8.bin.WIN64\lib-vc2022;..\..\OpenGLLib\glut\lib\x64;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)buildout\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)buildtmp\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>..\..\OpenGLLib\glew\glew-2.2.0-win32\glew-2.2.0\include;..\..\OpenGLLib\glfw\glfw-3.3.8.bin.WIN64\include;..\..\OpenGLLib\glm\glm;..\..\OpenGLLib\soil\soil\include;..\..\OpenGLLib\glut\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\OpenGLLib\glew\glew-2.2.0-win32\glew-2.2.0\include;..\..\OpenGLLib\glad\include;..\..\OpenGLLib\glfw\glfw-3.3.8.bin.WIN64\include;..\..\OpenGLLib\glm\glm;..\..\OpenGLLib\soil\soil\include;..\..\OpenGLLib\glut\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\OpenGLLib\glew\glew-2.2.0-win32\glew-2.2.0\lib\Release\x64;..\..\OpenGLLib\glfw\glfw-3.3.8.bin.WIN64\lib-vc2022;..\..\OpenGLLib\glut\lib\x64;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)buildout\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)buildtmp\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>

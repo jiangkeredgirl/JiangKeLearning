@@ -19,11 +19,20 @@
 //   4. 使用错误列表窗口查看错误
 //   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
 //   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
+
+//#define USE_GLAD
 #define GLEW_STATIC
-#include <iostream>
+
+#ifdef USE_GLAD
+#include <glad/glad.h>
+#else
 #include <GL/glew.h>
+#endif
+
 #include <GLFW/glfw3.h>
-//#include <glm/>
+
+const unsigned int SCR_WIDTH = 800;
+const unsigned int SCR_HEIGHT = 600;
 
 
 void processInput(GLFWwindow* window);
@@ -78,10 +87,10 @@ void DisplayGPUInfo()
 	//printf("GL_EXTENSIONS:%s\n", info);
 }
 
-int main(int argc, char* argv[]) 
+int InitGL(GLFWwindow*& window)
 {
 	glfwInit();
-	GLFWwindow* window = glfwCreateWindow(800, 600, "Test window", NULL, NULL);
+	window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Test window", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -90,22 +99,36 @@ int main(int argc, char* argv[])
 	}
 	glfwMakeContextCurrent(window);//指定线程
 	DisplayGPUInfo();
-	
+
 	//设置opengl版本3.3
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);//告诉glfw主要版本3
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);//告诉glfw次要版本3
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);//告诉glfw使用core-profile
-	
-	glewExperimental = true;
 
+#ifdef USE_GLAD
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	{
+		std::cout << "Failed to initialize GLAD" << std::endl;
+		return -1;
+	}
+#else
+	glewExperimental = true;
 	if (glewInit() != GLEW_OK)//初始glew工具
 	{
 		std::cout << "glew init failed." << std::endl;
 		glfwTerminate();
 		return EXIT_FAILURE;
 	}
+#endif
 	//设置视口视角
-	glViewport(0, 0, 800, 600);
+	glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT);
+	return 0;
+}
+
+int main(int argc, char* argv[]) 
+{
+	GLFWwindow* window = nullptr;
+	InitGL(window);
 	/*
 	//框线模式 Wireframe Mode
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
