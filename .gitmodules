@@ -16,3 +16,6 @@
 [submodule "ASIO/asio"]
 	path = ASIO/asio
 	url = https://github.com/chriskohlhoff/asio.git
+[submodule "stdexec/stdexec"]
+	path = stdexec/stdexec
+	url = https://github.com/NVIDIA/stdexec.git
