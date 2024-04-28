@@ -13,3 +13,6 @@
 [submodule "NNG/nng"]
 	path = NNG/nng
 	url = https://github.com/nanomsg/nng.git
+[submodule "ASIO/asio"]
+	path = ASIO/asio
+	url = https://github.com/chriskohlhoff/asio.git
