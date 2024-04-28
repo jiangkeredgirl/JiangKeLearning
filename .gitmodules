@@ -10,3 +10,6 @@
 [submodule "ROS2/ros2"]
 	path = ROS2/ros2
 	url = https://github.com/ros2/ros2.git
+[submodule "NNG/nng"]
+	path = NNG/nng
+	url = https://github.com/nanomsg/nng.git
