@@ -19,3 +19,6 @@
 [submodule "stdexec/stdexec"]
 	path = stdexec/stdexec
 	url = https://github.com/NVIDIA/stdexec.git
+[submodule "libunifex/libunifex"]
+	path = libunifex/libunifex
+	url = https://github.com/facebookexperimental/libunifex.git
